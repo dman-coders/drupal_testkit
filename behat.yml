@@ -8,8 +8,8 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MarkupContext
-        - Drupal\DrupalExtension\Context\DrupalLoginContext
-        - Drupal\DrupalExtension\Context\ScreenshotContext
+        # - Drupal\DrupalMoreExtensions\Context\DrupalLoginContext
+        - Drupal\DrupalMoreExtensions\Context\ScreenshotContext
 
   extensions:
     Behat\MinkExtension:

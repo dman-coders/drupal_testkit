@@ -19,3 +19,6 @@ export BEHAT_PARAMS='{"extensions":{
   "Behat\\MinkExtension":{"base_url":"https://www.drupal.org/"},
   "Drupal\\DrupalExtension":{"drush":{"alias":"@drupal.org"}}
 }}'
+
+# It's handy to have this set also.
+PATH=$PATH:vendor/bin

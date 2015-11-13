@@ -31,6 +31,13 @@ To find your local vender/bin path so you can just type 'behat'.
       "Drupal\\DrupalExtension":{"drush":{"alias":"@dev.drupal.dd"}}
     }}';
 
+Now, in the shell you are using, and will be running behat from,
+initialize those parameters by going
+
+    . env.sh
+
+You'll need to do that at the beginning of each session.
+
 These two steps are required for each shell session. 
 Alternatively you can edit the behat.yml file directly.
 
