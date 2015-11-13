@@ -1,0 +1,20 @@
+{
+  "require": {
+    "drupal/drupal-extension": "~3.0",
+    "dman-coders/drupal-more-extensions": "~1.0@dev"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "git@github.com:dman-coders/drupal-more-extensions.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:jhedstrom/drupalextension.git"
+    }
+  ],
+  "config": {
+    "bin-dir": "vendor/bin"
+  }
+}
+

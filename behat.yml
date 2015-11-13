@@ -1,0 +1,72 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\DrupalLoginContext
+        - Drupal\DrupalExtension\Context\ScreenshotContext
+
+  extensions:
+    Behat\MinkExtension:
+      # This should be set from CLI
+      # base_url: http://example.local
+
+      # Which runner to use for javascript-enabled tests.
+      javascript_session:  'selenium2'
+
+      # Name the browser runners available
+      # and their options
+      goutte: ~
+        # This runs as default client unless the test specified javascript.
+      selenium2:
+        # This requires you to be running selenium server
+        # With the expected parameters.
+        # Firefox is slow to startup. Use Chome wherever possible
+        browser: chrome
+        # Theoretically optional parameters, but thins WORK better
+        # when they are set.
+        wd_host: 'http://localhost:4444/wd/hub'
+        capabilities: { "browserName": "chrome", "browser": "chrome"}
+
+        # This one invokes phantomjs instead, which is faster but mysterious.
+        #wd_host: "http://localhost:8643/wd/hub"
+
+    Drupal\DrupalExtension:
+      # Default way of interacting with the site is blackbox (via web)
+      blackbox: ~
+
+      # For actions that need backend access, use drush.
+      api_driver: "drush"
+      drush_driver: "drush"
+      # When using drush, need to know the docroot or alias.
+      # Even remote aliases work!
+      drush:
+        alias: '@dev.niwa.dd'
+
+
+# Run these with :
+#    behat -p firefox
+chrome:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: googlechrome
+
+firefox:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: firefox
+      selenium2:
+        browser: firefox
+
+phantomjs:
+  extensions:
+    Behat\MinkExtension:
+      # Phantomjs runner pretends to be Selenium.
+      # Sahi seems flaky.
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub"
