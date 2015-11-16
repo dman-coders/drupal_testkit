@@ -17,5 +17,6 @@ Feature: Check behaviour of RSS feeds
 
   Scenario: Feeds should not expose the editor identity
     Given I am on "releases/feed"
-    Then the response should not contain "<dc:creator>"
+    Then the response should not contain "<dc:creator>Matthew.Floratos</dc:creator>"
+    And the response should not contain "<dc:creator>Rachel.Morton</dc:creator>"
 
