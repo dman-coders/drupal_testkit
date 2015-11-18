@@ -11,5 +11,4 @@ Feature: Check Ability to screenshot
 
   Scenario: Test screenshotting a page element.
     Given I am on the homepage
-    And
-    Then show me a screenshot
+    Then take a screenshot of "h1" and save "home-h1"

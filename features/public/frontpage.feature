@@ -8,4 +8,4 @@ Feature: Check connection to the site
   Scenario: Test opening the front page
     Given I am on the homepage
     Then the response should contain "Latest News"
-
+    And the response should contain "<h1"

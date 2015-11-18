@@ -1,4 +1,8 @@
 default:
+  # This is the default profile, which you get when you run
+  # bin/behat
+  # with no parameters.
+
   suites:
     default:
       contexts:
@@ -51,9 +55,9 @@ default:
       drush:
         alias: '@drupal7.dd'
 
-
+# Additional Functional Profiles
 # Run these with :
-#    behat -p firefox
+#    behat --profile=firefox
 chrome:
   extensions:
     Behat\MinkExtension:
