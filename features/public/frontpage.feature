@@ -1,3 +1,4 @@
+@d7
 @demo
 Feature: Check connection to the site
   In order to ensure that anonymous users can see the site
@@ -6,5 +7,5 @@ Feature: Check connection to the site
 
   Scenario: Test opening the front page
     Given I am on the homepage
-    Then the response should contain "Latest News From the Beehive"
+    Then the response should contain "Latest News"
 

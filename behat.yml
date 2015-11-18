@@ -13,7 +13,8 @@ default:
 
   extensions:
     Behat\MinkExtension:
-      # This should be set from CLI
+      # base_url is required, and should be set from CLI.
+      # see env.dist.sh for instructions for doing that.
       # base_url: http://example.local
 
       # Which runner to use for javascript-enabled tests.
@@ -45,8 +46,10 @@ default:
       drush_driver: "drush"
       # When using drush, need to know the docroot or alias.
       # Even remote aliases work!
+      # This is localized, so also should be provided from the CLI level,
+      # See env.dist.sh
       drush:
-        alias: '@dev.niwa.dd'
+        alias: '@drupal7.dd'
 
 
 # Run these with :

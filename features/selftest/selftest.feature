@@ -6,5 +6,5 @@ Feature: Check connection to the site
 
   Scenario: Test opening the front page and checking the 'Generator' metatag
     Given I am on the homepage
-    Then the response should contain "Latest News From the Beehive"
+    Then the response should contain '<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
 

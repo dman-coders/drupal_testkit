@@ -10,8 +10,8 @@
 
 # Example localized setting
 # export BEHAT_PARAMS='{"extensions":{
-#   "Behat\\MinkExtension":{"base_url":"http://dev.niwa.dd:8083"},
-#   "Drupal\\DrupalExtension":{"drush":{"alias":"@dev.niwa.dd"}}
+#   "Behat\\MinkExtension":{"base_url":"http://drupal7.dd:8083"},
+#   "Drupal\\DrupalExtension":{"drush":{"alias":"@drupal7.dd"}}
 # }}'
 
 # Distributed starter example, suitable for selftest ONLY.

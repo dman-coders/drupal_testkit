@@ -1,4 +1,6 @@
-@d7 @api
+@d7
+@demo
+@api
 Feature: DrupalContext
   In order to ensure the testing connections are working
   As a tester
