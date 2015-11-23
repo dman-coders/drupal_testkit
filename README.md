@@ -10,3 +10,6 @@ If all your setup is complete and tested, then to run all tests, go
     . env.sh
     behat
 
+## To generate some component screenshots
+
+    behat --profile chrome features styleguide
