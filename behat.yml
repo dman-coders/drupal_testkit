@@ -14,6 +14,7 @@ default:
         - Drupal\DrupalExtension\Context\MarkupContext
         # - Drupal\DrupalMoreExtensions\Context\DrupalLoginContext
         - Drupal\DrupalMoreExtensions\Context\ScreenshotContext
+        - Drupal\DrupalMoreExtensions\Context\BrowserContext
 
   extensions:
     Behat\MinkExtension:
