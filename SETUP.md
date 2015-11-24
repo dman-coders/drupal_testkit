@@ -141,3 +141,14 @@ Like Selenium server this can be started manually, then left running.
     behat -p phantomjs features/selftest/selftest.feature
     behat -p phantomjs features/selftest/screenshot.feature
     
+## Troubleshooting
+
+If running a test freezes, and CTRL-C does NOT escape it (dunno why, some misconfigurations while waiting for the virtual browser I think) then the stuck process can be stopped with :
+
+    CTRL-Z
+    ps
+    kill {the running process id}
+    
+This is pretty normal, but behat runner is the first time I've seen a php-cli ignore the CTRL-C interrupt.
+
+The cause is still just something when I introduce bad code in development, it is not expected to be a symptom when using a stable set of tests.
