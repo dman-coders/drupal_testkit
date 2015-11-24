@@ -52,8 +52,8 @@ You should see the results of the requests behat made to your target webserver.
 Each of these need extra installation steps, but when running, you can trigger 
 browser tests.
 
-    behat -p chrome features/screenshot.feature 
-    behat -p phantomjs features/screenshot.feature 
+    behat -p chrome features/selftest/screenshot.feature 
+    behat -p phantomjs features/selftest/screenshot.feature 
 
 # Install Selenium server, Phantomjs, or both.
 
