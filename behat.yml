@@ -13,8 +13,11 @@ default:
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MarkupContext
         # - Drupal\DrupalMoreExtensions\Context\DrupalLoginContext
-        - Drupal\DrupalMoreExtensions\Context\ScreenshotContext
         - Drupal\DrupalMoreExtensions\Context\BrowserContext
+        - Drupal\DrupalMoreExtensions\Context\ScreenshotContext:
+            params:
+              path: 'local_styleguide'
+              timestamped: false
 
   extensions:
     Behat\MinkExtension:
@@ -55,6 +58,7 @@ default:
       # See env.dist.sh
       drush:
         alias: '@drupal7.dd'
+
 
 # Additional Functional Profiles
 # Run these with :
