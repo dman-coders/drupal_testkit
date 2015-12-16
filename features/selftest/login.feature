@@ -1,5 +1,7 @@
 @d7
 @demo
+# Steps in this test set requires access to the API via drush.
+# Note, non-standard themes etc may cause these assumptions to fail!
 @api
 Feature: DrupalContext
   In order to ensure the testing connections are working
@@ -8,7 +10,8 @@ Feature: DrupalContext
 
   Scenario: Create and log in as a user
     Given I am logged in as a user with the "authenticated user" role
-    When I click "My account"
+    #When I click "My account"
+    When I visit "user"
     Then I should see the heading "History"
 
   Scenario: Test that blackbox login works
