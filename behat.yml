@@ -2,7 +2,9 @@ default:
   # This is the default profile, which you get when you run
   # bin/behat
   # with no parameters.
-
+  #
+  # If more than one sute is defined, they all get run, and
+  # default settings are not inherited by other suites.
   suites:
     default:
       contexts:
@@ -16,7 +18,7 @@ default:
         - Drupal\DrupalMoreExtensions\Context\BrowserContext
         - Drupal\DrupalMoreExtensions\Context\ScreenshotContext:
             params:
-              path: 'local_styleguide'
+              path: 'screenshots'
               timestamped: false
 
   extensions:
@@ -57,7 +59,7 @@ default:
       # This is localized, so also should be provided from the CLI level,
       # See env.dist.sh
       drush:
-        alias: '@drupal7.dd'
+        # alias: '@drupal7.dd'
 
 
 # Additional Functional Profiles
