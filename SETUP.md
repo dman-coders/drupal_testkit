@@ -41,6 +41,15 @@ You'll need to do that at the beginning of each session.
 These two steps are required for each shell session. 
 Alternatively you can edit the behat.yml file directly.
 
+#### drush connection to your test server
+
+The drush alias is only needed for some types of tests.
+If you are only doing public-facing content tests, it's optional.
+If doing tests that require changes like permissions to be made,
+then your drush site alias should be set up and tested before using it.
+
+In theory, a working remote drush alias to your test target should work.
+
 # Run behat
 
     behat features/selftest/selftest.feature 
@@ -80,6 +89,8 @@ to place the jar file into /usr/lib/selenium/
 That also gives steps for setting up the service so it autostarts
 which is much more fun than doing it manually.
 See `org.nhabit.Selenium.plist`
+This should ensure the server starts in the background (via launchd)
+on every restart.
 
 However, the first time, you should do it by hand until it's running
 so you can confirm it's working.
