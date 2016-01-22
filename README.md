@@ -11,12 +11,19 @@ If all your setup is complete and tested, then to run all tests, go
     behat
 
 
-However, that will do everything.
+However, that will do everything, and not everything will work.
 Uusally best to start with the selftest ones, then work up from there.
+
+## To run some self-tests
+
+    behat features/selftest/selftest.feature
 
 ## To generate some component screenshots
 
-    behat --profile chrome features styleguide
+    behat --profile=chrome --suite=styleguide
+
+Will use chrome to run the tests identified by the named suite (set of tests)
+Requires Chromerunner to be listening!
 
 ## Troubleshooting
 

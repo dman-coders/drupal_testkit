@@ -1,12 +1,12 @@
 default:
-  # This is the default profile, which you get when you run
+  # This is the default *profile*, which you get when you run
   # bin/behat
   # with no parameters.
   #
-  # If more than one sute is defined, they all get run, and
+  # If more than one suite is defined, they all get run, and
   # default settings are not inherited by other suites.
   suites:
-    default:
+    default: # The default *suite*. Things from here are not inherited however.
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -14,12 +14,53 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MarkupContext
-        # - Drupal\DrupalMoreExtensions\Context\DrupalLoginContext
         - Drupal\DrupalMoreExtensions\Context\BrowserContext
         - Drupal\DrupalMoreExtensions\Context\ScreenshotContext:
             params:
               path: 'screenshots'
               timestamped: false
+      filters:
+        # Don't run the styleguide tests unless we load the StyleguideContext
+        # Don't run login stuff unless we have loaded api context
+        tags: "~@styleguide&&~@api"
+
+    # An alternate test suite.
+    styleguide:
+      # Run as behat --suite=styleguide
+      filters:
+        # This behat definition only runs on features tagged @styleguide.
+        tags: "@styleguide"
+      paths:
+        # When running the styleguide suite, run the tests in the styleguide directory
+        - features/styleguide
+      contexts:
+        # This is a small set. Just steer the browser, no Drupalisms.
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalMoreExtensions\Context\StyleguideContext:
+            params:
+              path: 'screenshots/images'
+              timestamped: false
+              styleguide_data_filepath: 'screenshots/styleguide.rss.xml'
+              styleguide_html_filepath: 'screenshots/styleguide.html'
+    api: # Tests that require logging in. These are tagged @api
+      contexts:
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalMoreExtensions\Context\DrupalLoginContext:
+            users:
+              admin:
+                username: admin
+                password: adminpass
+              editor:
+                username: "Sparks Editor"
+                password: "editorpass"
+        - Drupal\DrupalMoreExtensions\Context\BrowserContext
+      filters:
+        # Don't run the styleguide tests unless we load the StyleguideContext
+        # Don't run login stuff unless we have loaded api context
+        tags: "@api"
+
 
   extensions:
     Behat\MinkExtension:

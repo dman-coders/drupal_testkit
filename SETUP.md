@@ -20,7 +20,7 @@ requests. You won't see anything but the analysis results.
 
 ### Suggested - set up PATH
  
-To find your local vender/bin path so you can just type 'behat'.
+To find your local vender/bin path so you can just type 'behat' from now on.
 
     PATH=$PATH:vendor/bin
 
@@ -31,8 +31,13 @@ To find your local vender/bin path so you can just type 'behat'.
       "Drupal\\DrupalExtension":{"drush":{"alias":"@dev.drupal.dd"}}
     }}';
 
+### Shortcut - put this setup into your env.sh
+
+* Copy `env.dist.sh` to `env.sh`.
+* Edit your `env.sh` to include your correct test URL.
+
 Now, in the shell you are using, and will be running behat from,
-initialize those parameters by going
+initialize those parameters by going:
 
     . env.sh
 
@@ -136,10 +141,26 @@ PhantomJS is a virtual headless browser emulator, that nevertheless runs
 DOM and javascript.
 It works much like Selenium, so requires a daemon task to be running
 which Behat sends instructions to.
-Avoid older tutorials that say to install it with `sahi`. The more recent 
-version works stand-alone.
+Avoid older tutorials that say to install it with `sahi`. Don't!
+The more recent version works stand-alone, but depends on `node/nodejs`.
+
+### Install PhantomJS on OSX
 
     brew update && brew install phantomjs
+
+
+### Install PhantomJS on Ubuntu
+
+On Ubuntu (do NOT use apt-get install phantomjs, use `npm` instead)
+
+    sudo apt-get install node npm
+
+    # Debian issue needs this work-around due to a rename of the binary
+    # http://stackoverflow.com/questions/21168141/can-not-install-packages-using-node-package-manager-in-ubuntu
+    sudo ln -s `which nodejs` /usr/bin/node
+
+    sudo npm install -g phantomjs
+    phantomjs --version
 
 Like Selenium server this can be started manually, then left running.
 
@@ -151,7 +172,10 @@ Like Selenium server this can be started manually, then left running.
 
     behat -p phantomjs features/selftest/selftest.feature
     behat -p phantomjs features/selftest/screenshot.feature
-    
+
+The second one, if successful, should produce a screenshot in the screenshots
+ directory.
+
 ## Troubleshooting
 
 If running a test freezes, and CTRL-C does NOT escape it (dunno why, some misconfigurations while waiting for the virtual browser I think) then the stuck process can be stopped with :
