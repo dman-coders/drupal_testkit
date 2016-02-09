@@ -205,6 +205,7 @@ If running a test freezes, and CTRL-C does NOT escape it (dunno why, some miscon
 
     CTRL-Z
     ps
+    # find the "php ./vendor/bin/behat" process
     kill {the running process id}
     
 This is pretty normal, but behat runner is the first time I've seen a php-cli ignore the CTRL-C interrupt.
