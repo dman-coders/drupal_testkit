@@ -15,11 +15,12 @@ Feature: DrupalContext
     And I click "Edit"
     Then the response status code should be 200
 
+  @api
   Scenario: Test that blackbox login works
-    Given I am logged in as "Sparks Editor" with password "editorpass"
+    Given I am logged in as "Anne Editor" with password "editorpass"
     When I visit "/user"
-    Then I should see the heading "Sparks Editor"
-    
+    Then I should see the heading "Anne Editor"
+
   @api
   Scenario: Log in as superadmin
     Given I am logged in as the superuser
