@@ -5,7 +5,7 @@ Feature: Check connection to the site
   As a member of the public
   I need to see content on the website
 
-  Scenario: Test opening the front page
+  Scenario: Check the Drupal footer
     Given I am on the homepage
-    Then the response should contain "Latest News"
+    Then the response should contain "Powered by"
     And the response should contain "<h1"
