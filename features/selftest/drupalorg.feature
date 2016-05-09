@@ -5,5 +5,5 @@ Feature: Check connection to the drupal.org site
   I need to prove that behat testing works.
 
   Scenario: Test opening the front page and checking the H1 for Drupal
-    Given I am on the "https://www.drupal.org/"
+    Given I am on "https://www.drupal.org/"
     Then the response should contain "<h1 id=\"site-name\"><a href=\"/\" title=\"Drupal\">Drupal</a></h1>"
