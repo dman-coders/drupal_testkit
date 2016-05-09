@@ -7,6 +7,9 @@ If this is the first time running anything:
 This will install the main dependencies locally.
 A fresh install may take a minute or two and download 17M.
 
+If Composer notes issues (like you are missing cURL)
+then you will have to resolve that as best yuou can (eg `sudo apt-get install php5-curl`)
+
 * Copy `env.dist.sh` to `env.sh`.
 * Edit your `env.sh` to include your correct test URL.
 
@@ -19,12 +22,12 @@ Run (at first) just the self-test suite.
 
     behat features/selftest/selftest.feature
 
-That assumes your theme at leats leaves the drupal meta tag in the top.
+That assumes your theme at least leaves the drupal meta tag in the top.
 If not, you'll have to start thinking already.
 
 ## Explanations
 
-By default, tests will run 'headless' with the goutte html-only 
+By default, most tests will run 'headless' with the goutte html-only
 requests. You won't see anything but the analysis results.
 
 ### The env file - set up PATH
@@ -42,6 +45,12 @@ To find your local vender/bin path so you can just type 'behat' from now on.
 
 
 Alternatively you can edit the behat.yml file directly.
+
+## The env file - you can create several
+
+You can repeat the process to creat a env-test.sh and a env-preview.sh
+instance.
+Edit the URLs and drush site-aliases as appropriate.
 
 #### drush connection to your test server
 

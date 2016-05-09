@@ -34,3 +34,11 @@ start the selenium browser runner that should be on in the background.
 See [SETUP.md](SETUP.md)
 (If the process stalls, it never comes back,
  you may need to kill it from above)
+
+### Cache
+
+As is often the case with Drupal, caching can be a gotcha.
+The anonymous tests may find themselves getting cached content,
+they are not running in the same browser session.
+You can investigate by running behat with the --verbose option,
+and it's a good idea to do a cache-clear if results seem unexpected.
