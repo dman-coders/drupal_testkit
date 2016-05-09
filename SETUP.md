@@ -1,37 +1,11 @@
-# To get this working:
+# To get this working
+
+If this is the first time running anything:
 
     composer install
-    bin/behat --init
 
-This will install the main dependencies locally. 
+This will install the main dependencies locally.
 A fresh install may take a minute or two and download 17M.
-
-It can be more efficient for you to install the entire Behat dependency
-package once, [somewhere more global](http://behat-drupal-extension.readthedocs.org/en/3.0/globalinstall.html)
-on your machine.
-However, as versions of these libraries can be sensitive,
-and we don't want to cause any side effects - these instructions will try to 
-keep as much as possible local to this install directory.
-If this is a tool you want to use in more than one place, then consider
-shifting the libraries to a higer place.
-
-By default, tests will run 'headless' with the goutte html-only 
-requests. You won't see anything but the analysis results.
-
-### Suggested - set up PATH
- 
-To find your local vender/bin path so you can just type 'behat' from now on.
-
-    PATH=$PATH:vendor/bin
-
-### Required - Set up an environment var to define your sites URL
-
-    export BEHAT_PARAMS='{"extensions":{
-      "Behat\\MinkExtension":{"base_url":"http://dev.drupal.dd:8083"},
-      "Drupal\\DrupalExtension":{"drush":{"alias":"@dev.drupal.dd"}}
-    }}';
-
-### Shortcut - put this setup into your env.sh
 
 * Copy `env.dist.sh` to `env.sh`.
 * Edit your `env.sh` to include your correct test URL.
@@ -41,9 +15,32 @@ initialize those parameters by going:
 
     . env.sh
 
-You'll need to do that at the beginning of each session.
+Run (at first) just the self-test suite.
 
-These two steps are required for each shell session. 
+    behat features/selftest/selftest.feature
+
+That assumes your theme at leats leaves the drupal meta tag in the top.
+If not, you'll have to start thinking already.
+
+## Explanations
+
+By default, tests will run 'headless' with the goutte html-only 
+requests. You won't see anything but the analysis results.
+
+### The env file - set up PATH
+ 
+To find your local vender/bin path so you can just type 'behat' from now on.
+
+    PATH=$PATH:vendor/bin
+
+### The env file - Set up an environment var to define your sites URL
+
+    export BEHAT_PARAMS='{"extensions":{
+      "Behat\\MinkExtension":{"base_url":"http://dev.drupal.dd:8083"},
+      "Drupal\\DrupalExtension":{"drush":{"alias":"@dev.drupal.dd"}}
+    }}';
+
+
 Alternatively you can edit the behat.yml file directly.
 
 #### drush connection to your test server
@@ -176,7 +173,33 @@ Like Selenium server this can be started manually, then left running.
 The second one, if successful, should produce a screenshot in the screenshots
  directory.
 
+
+## Suggested
+
+It can be more efficient for you to install the entire Behat dependency
+package once, [somewhere more global](http://behat-drupal-extension.readthedocs.org/en/3.0/globalinstall.html)
+on your machine.
+However, as versions of these libraries can be sensitive,
+and we don't want to cause any side effects - these instructions will try to
+keep as much as possible local to this install directory.
+If this is a tool you want to use in more than one place, then consider
+shifting the libraries to a higer place.
+
 ## Troubleshooting
+
+### Test-run on drupal.org first
+
+To ensure that anything at all is happening, you can run a couple of basic tests against an existing site
+
+* Before copying env.sh, the 'site' will be set to be 'https://www.drupal.org'
+
+So run
+
+    behat features/selftest/drupalorg.feature
+
+This test uses no special actions, and should indicate that behat libraries are available.
+
+### Escape from frozen
 
 If running a test freezes, and CTRL-C does NOT escape it (dunno why, some misconfigurations while waiting for the virtual browser I think) then the stuck process can be stopped with :
 
