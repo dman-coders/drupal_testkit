@@ -1,4 +1,5 @@
 @demo
+@d7
 Feature: Check connection to the site
   In order to ensure the testing connections are working
   As a tester
